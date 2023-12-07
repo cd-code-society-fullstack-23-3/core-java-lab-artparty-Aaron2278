@@ -1,45 +1,29 @@
 package com.codedifferently.artparty;
-import org.junit.Test;
-import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GuestTest {
 
     @Test
-    public void testGuestConstructor01() {
-        //Given
-        Long id;
-        String firstName;
-        String lastName;
-        String email;
-        String phone;
-        String reasonForVisit;
-        //When
-        Guest guest = new Guest(id, firstName, lastName, email, phone, reasonForVisit);
-        //Then
-        assertEquals(id, guest.getId());
+    public void testConstructorWithNoParameters() {
+        Guest guest = new Guest();
+        String expected = "Id: null; FirstName:; LastName:; Email:; PhoneNumber:; ReasonForVisit:";
+        String actual = guest.toString();
+        assertEquals(expected, actual);
+
+    }
+    @Test
+    public void testConstructorWithThreeParameters(){
+        //given
+        String firstName = "John";
+        String lastName = "Doe";
+        String email = "john.doe@email.com";
+        //when
+        Guest guest = new Guest(firstName, lastName, email);
+        //then
         assertEquals(firstName, guest.getFirstName());
         assertEquals(lastName, guest.getLastName());
         assertEquals(email, guest.getEmail());
-        assertEquals(phone, guest.getPhone());
-        assertEquals(reasonForVisit, guest.getReasonForVisit());
     }
 }
-
-  /*  @Test
-    void testBookConstructor(){
-        //Given
-        String title = "The Art of War";
-        String author = "Sun Tzu";
-        String numberOfPages = "256";
-        String genre = "Non-Fiction";
-
-        //When
-
-        Book book = new Book(title, author, numberOfPages,genre);
-        //Then
-        assertEquals(title, book.getTitle());
-        assertEquals(author,book.getAuthor());
-        assertEquals(numberOfPages,book.getNumberOfPages());
-        assertEquals(genre,book.getGenre());
-    }
-   */
